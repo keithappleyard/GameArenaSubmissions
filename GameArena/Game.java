@@ -30,5 +30,6 @@ public class Game
 
         Grid grid = new Grid(arena, 8, 8);
         grid.UpdateDisplay(arena);
+        //Snake snake = new Snake(grid, 0, 0);
     }
 }

@@ -1,15 +1,14 @@
 public class Cell {
     private double width;
     private double height;
-    //private int X;
-    //private int Y;
-
+    private Entity entity;
     private String colour;
 
     public Cell(double x, double y){
         width = x;
         height = y;
-        colour = "BLUE";
+        colour = "GREY";
+        entity = null;
     }
 
     public double GetWidth(){
@@ -20,11 +19,22 @@ public class Cell {
         return height;
     }
 
+    public void setColour(String col){
+        colour = col;
+    }
+
     public String getColour(){
         return colour;
     }
 
-    /*public void Update(GameArena arena){
-        Rectangle rect = new Rectangle(height, height, width, height, colour)
-    }*/
+    public void updateItem(Entity item){
+        entity = item;
+    }
+
+    public void update(){
+        if(entity == null){
+            return;
+        }
+        entity.show();
+    }
 }

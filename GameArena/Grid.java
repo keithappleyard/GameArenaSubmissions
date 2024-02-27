@@ -22,12 +22,25 @@ public class Grid {
     public void UpdateDisplay(GameArena arena){
         for(int i = 0; i < rows; i++){
             for(int j = 0; j < columns; j++){
-                Rectangle rect1 = new Rectangle(i * cells[i][j].GetWidth(), j * cells[i][j].GetHeight(), cells[i][j].GetWidth() - 3, cells[i][j].GetHeight() - 3, "WHITE");
-                Rectangle rect2 = new Rectangle(i * cells[i][j].GetWidth(), j * cells[i][j].GetHeight(), cells[i][j].GetWidth(), cells[i][j].GetHeight(), cells[i][j].getColour());
+                //initialize grid
+                Rectangle rect1 = new Rectangle(i * cells[i][j].GetWidth(), j * cells[i][j].GetHeight(), cells[i][j].GetWidth() - 3, cells[i][j].GetHeight() - 3, cells[i][j].getColour());
+                Rectangle rect2 = new Rectangle(i * cells[i][j].GetWidth(), j * cells[i][j].GetHeight(), cells[i][j].GetWidth(), cells[i][j].GetHeight(), "BLACK");
 
                 arena.addRectangle(rect2);
                 arena.addRectangle(rect1);
             }
         }
+    }
+
+    public double getGridSizeX(){
+        return cells[0][0].GetWidth();
+    }
+
+    public double getGridSizeY(){
+        return cells[0][0].GetHeight();
+    }
+
+    public int getGridSize(){
+        return rows*columns;
     }
 }
