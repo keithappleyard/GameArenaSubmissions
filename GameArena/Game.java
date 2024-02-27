@@ -7,7 +7,7 @@ public class Game
         GameArena arena = new GameArena(1000, 600);
         //Ball b = new Ball(250, 150, 20, "GREEN");
         //arena.addBall(b);
-        Goodie g = new Goodie(250, 450);
+        /*Goodie g = new Goodie(250, 450);
         //Baddie b = new Baddie(100, 450);
         //b.addTo(arena);
         g.addTo(arena);
@@ -26,6 +26,9 @@ public class Game
                 g.decelerateX();
             }
             arena.pause();
-        }
+        }*/
+
+        Grid grid = new Grid(arena, 8, 8);
+        grid.UpdateDisplay(arena);
     }
 }
