@@ -29,12 +29,17 @@ public class Cell {
 
     public void updateItem(Entity item){
         entity = item;
+        //update();
     }
 
-    public void update(){
+    public void showEntity(GameArena arena){
         if(entity == null){
             return;
         }
-        entity.show();
+        entity.show(arena);
+    }
+
+    public Entity getItem(){
+        return entity;
     }
 }

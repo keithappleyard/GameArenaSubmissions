@@ -7,18 +7,22 @@ public class Snake{
     private int currentSize;
     private Grid grid;
 
-    public Snake(Grid grid, int x, int y){
+    public Snake(Grid g, int x, int y){
         X = x;
         Y = y;
+        grid = g;
         cellSizeX = grid.getGridSizeX();
         cellSizeY = grid.getGridSizeY();
         currentSize = 1;
         body = new Bodypart[grid.getGridSize()];
+
+        //add Bodypart item to cell at the front
         body[0] = new Bodypart(cellSizeX, cellSizeY, x, y);
         grid.getCell(x, y).updateItem(body[0]);
     }
 
     public void eat(){
+        //increase size
         if(currentSize >= body.length){
             System.out.println("ERROR: Snake exceeded max size");
             return;
@@ -47,4 +51,11 @@ public class Snake{
     }
 
     //add update method
+    public void updateGUI(GameArena arena){
+        //grid.getCell(0, 0).showEntity(arena);
+
+        for(int i = 0; i < currentSize; i++){
+            grid.getCell(body[i].getX(), body[i].getY()).showEntity(arena);;
+        }
+    }
 }

@@ -1,8 +1,9 @@
 public class Entity {
-    private double sizeX;
-    private double sizeY;
+    protected double sizeX;
+    protected double sizeY;
     protected int X;
     protected int Y;
+    protected Rectangle rects[];
 
     public Entity(double SizeX, double SizeY, int x, int y){
         sizeX = SizeX;
@@ -27,7 +28,12 @@ public class Entity {
         return Y;
     }
 
-    public void show(){
-        Rectangle rect = new Rectangle(sizeX, sizeY, Y, X, "GREEN");
+    public void show(GameArena arena){
+        //Rectangle rect = new Rectangle(sizeX, sizeY, Y, X, "GREEN");
+        //arena.addRectangle(rect);
+    }
+
+    public Rectangle[] getRects(){
+        return rects;
     }
 }

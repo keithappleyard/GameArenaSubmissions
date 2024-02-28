@@ -28,6 +28,8 @@ public class Grid {
 
                 arena.addRectangle(rect2);
                 arena.addRectangle(rect1);
+
+                cells[i][j].showEntity(arena);
             }
         }
     }
