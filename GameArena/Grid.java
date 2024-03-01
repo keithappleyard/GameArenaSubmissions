@@ -10,7 +10,17 @@ public class Grid {
 
         for(int i = 0; i < rows; i++){
             for(int j = 0; j < columns; j++){
-                cells[i][j] = new Cell(arena.getArenaWidth() / rows, arena.getArenaHeight() / columns);
+                double width = arena.getArenaWidth() / rows;
+                double height = arena.getArenaHeight() / columns;
+
+                cells[i][j] = new Cell(width, height);
+
+                //initialize grid
+                Rectangle rect1 = new Rectangle(i * width, j * height, width - 3, height - 3, cells[i][j].getColour());
+                Rectangle rect2 = new Rectangle(i * width, j * height, width, height, "BLACK");
+
+                arena.addRectangle(rect2);
+                arena.addRectangle(rect1);
             }
         }
     }
@@ -22,13 +32,6 @@ public class Grid {
     public void UpdateDisplay(GameArena arena){
         for(int i = 0; i < rows; i++){
             for(int j = 0; j < columns; j++){
-                //initialize grid
-                Rectangle rect1 = new Rectangle(i * cells[i][j].GetWidth(), j * cells[i][j].GetHeight(), cells[i][j].GetWidth() - 3, cells[i][j].GetHeight() - 3, cells[i][j].getColour());
-                Rectangle rect2 = new Rectangle(i * cells[i][j].GetWidth(), j * cells[i][j].GetHeight(), cells[i][j].GetWidth(), cells[i][j].GetHeight(), "BLACK");
-
-                arena.addRectangle(rect2);
-                arena.addRectangle(rect1);
-
                 cells[i][j].showEntity(arena);
             }
         }
