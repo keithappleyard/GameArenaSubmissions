@@ -31,18 +31,23 @@ public class Snake{
         currentSize++;
     }
 
-    public void move(int x, int y){
+    public void move(GameArena arena, int x, int y){
+        if(X + x < 0 || X + x > 7 || Y + y < 0 || Y + y > 7){
+            return; //either game over or go to other side of screen
+        }
+
         for(int i = currentSize; i > 0; i--){
             //update coordinates
             if(body[i-1].getX() == X && body[i-1].getY() == Y){
                 continue;
             }
-            grid.getCell(body[i].getX(), body[i].getY()).updateItem(null);;
+            grid.getCell(body[i].getX(), body[i].getY()).removeEntity(arena);
             body[i].move(body[i-1].getX(), body[i-1].getY());
             
             //update grid
             grid.getCell(body[i].getX(), body[i].getY()).updateItem(body[i]);;
         }
+        grid.getCell(X, Y).removeEntity(arena);
         body[0].move(X + x,Y + y);
         grid.getCell(body[0].getX(), body[0].getY()).updateItem(body[0]);;
         X += x;

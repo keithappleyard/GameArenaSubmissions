@@ -30,11 +30,38 @@ public class Game
 
         Grid grid = new Grid(arena, 8, 8);
         Snake snake = new Snake(grid, 0, 0);
-        snake.move(1,0);
-
+        int gameSpeed = 30;
+        int xDirection = 1;
+        int yDirection = 0;
+        int updateTick = 0;
         grid.UpdateDisplay(arena);
 
         while(true){
+            if(arena.leftPressed()){
+                xDirection = -1;
+                yDirection = 0;
+            }
+            if(arena.rightPressed()){
+                xDirection = 1;
+                yDirection = 0;
+            }
+            if(arena.upPressed()){
+                xDirection = 0;
+                yDirection = -1;
+            }
+            if(arena.downPressed()){
+                xDirection = 0;
+                yDirection = 1;
+            }
+
+            if(updateTick >= gameSpeed){
+                snake.move(arena, xDirection, yDirection);
+                grid.UpdateDisplay(arena);
+                updateTick = 0;
+            }
+            else{
+                updateTick++;
+            }
             arena.pause();
         }
     }

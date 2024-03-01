@@ -28,6 +28,9 @@ public class Cell {
     }
 
     public void updateItem(Entity item){
+        /*if(item = null && entity == null){
+            removeEntity(arena);
+        }*/
         entity = item;
     }
 
@@ -40,6 +43,7 @@ public class Cell {
 
     public void removeEntity(GameArena arena){
         entity.remove(arena);
+        entity = null;
     }
 
     public Entity getItem(){
