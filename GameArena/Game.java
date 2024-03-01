@@ -29,15 +29,12 @@ public class Game
         }*/
 
         Grid grid = new Grid(arena, 8, 8);
+        Snake snake = new Snake(grid, 0, 0);
+        snake.move(1,0);
+
         grid.UpdateDisplay(arena);
 
-        Snake snake = new Snake(grid, 0, 0);
-        //grid.getCell(0, 0).showEntity(arena);
-        snake.updateGUI(arena);
-
         while(true){
-            //snake.move(1,0);
-
             arena.pause();
         }
     }

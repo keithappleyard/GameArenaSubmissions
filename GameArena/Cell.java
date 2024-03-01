@@ -29,7 +29,6 @@ public class Cell {
 
     public void updateItem(Entity item){
         entity = item;
-        //update();
     }
 
     public void showEntity(GameArena arena){
@@ -37,6 +36,10 @@ public class Cell {
             return;
         }
         entity.show(arena);
+    }
+
+    public void removeEntity(GameArena arena){
+        entity.remove(arena);
     }
 
     public Entity getItem(){

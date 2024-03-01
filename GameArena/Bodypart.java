@@ -10,7 +10,7 @@ public class Bodypart extends Entity {
     }
 
     public void show(GameArena arena){
-        Rectangle rect = new Rectangle(X, Y, sizeX, sizeY, "DARKGREY");
+        Rectangle rect = new Rectangle(X * sizeX, Y * sizeY, sizeX, sizeY, "DARKGREY");
         for(int i = 0; i < rects.length; i++){
             rects[0] = rect;
             arena.addRectangle(rect);

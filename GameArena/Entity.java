@@ -33,6 +33,12 @@ public class Entity {
         //arena.addRectangle(rect);
     }
 
+    public void remove(GameArena arena){
+        for(int i = 0; i < rects.length; i++){
+            arena.removeRectangle(rects[i]);
+        }
+    }
+
     public Rectangle[] getRects(){
         return rects;
     }

@@ -37,11 +37,11 @@ public class Grid {
         }
     }
 
-    public double getGridSizeX(){
+    public double getCellSizeX(){
         return cells[0][0].GetWidth();
     }
 
-    public double getGridSizeY(){
+    public double getCellSizeY(){
         return cells[0][0].GetHeight();
     }
 

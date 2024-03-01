@@ -11,8 +11,8 @@ public class Snake{
         X = x;
         Y = y;
         grid = g;
-        cellSizeX = grid.getGridSizeX();
-        cellSizeY = grid.getGridSizeY();
+        cellSizeX = grid.getCellSizeX();
+        cellSizeY = grid.getCellSizeY();
         currentSize = 1;
         body = new Bodypart[grid.getGridSize()];
 
@@ -27,13 +27,12 @@ public class Snake{
             System.out.println("ERROR: Snake exceeded max size");
             return;
         }
-        currentSize++;
         body[currentSize] = new Bodypart(cellSizeX, cellSizeX, body[body.length].getX(), body[body.length].getY());
-
+        currentSize++;
     }
 
     public void move(int x, int y){
-        for(int i = body.length; i > 0; i--){
+        for(int i = currentSize; i > 0; i--){
             //update coordinates
             if(body[i-1].getX() == X && body[i-1].getY() == Y){
                 continue;
@@ -44,18 +43,9 @@ public class Snake{
             //update grid
             grid.getCell(body[i].getX(), body[i].getY()).updateItem(body[i]);;
         }
-        body[0].move(x,y);
+        body[0].move(X + x,Y + y);
         grid.getCell(body[0].getX(), body[0].getY()).updateItem(body[0]);;
-        X = x;
-        Y = y;
-    }
-
-    //add update method
-    public void updateGUI(GameArena arena){
-        //grid.getCell(0, 0).showEntity(arena);
-
-        for(int i = 0; i < currentSize; i++){
-            grid.getCell(body[i].getX(), body[i].getY()).showEntity(arena);;
-        }
+        X += x;
+        Y += y;
     }
 }
